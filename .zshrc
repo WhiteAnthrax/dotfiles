@@ -1,0 +1,208 @@
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export LANG="ja_JP.UTF-8"
+export TZ="JST-9"
+export PATH="/home/anthrax/bin:/usr/lib/ccache/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/java/jre/bin:${PATH}"
+export EDITOR="vim"
+export DOTFONTPATH="/usr/share/fonts/local:/usr/share/fonts/encodings:/usr/share/fonts/encodings/large:/usr/share/fonts/util:/usr/share/fonts/misc:/usr/share/fonts/75dpi:/usr/share/fonts/100dpi:/usr/share/fonts/cyrillic:/usr/share/fonts/Type1:/usr/share/fonts/CID:/usr/share/fonts/TTF:/usr/share/fonts/ukr:/usr/share/fonts/arphicfonts:/usr/share/fonts/baekmuk-fonts:/usr/share/fonts/default:/usr/share/fonts/default/ghostscript:/usr/share/fonts/kochi-substitute:/usr/share/fonts/aquafont:/usr/share/fonts/aquapfont:/usr/share/fonts/monafont:/usr/share/fonts/mikachan-font:/usr/share/fonts/sazanami:/usr/share/fonts/shinonome:/usr/share/fonts/ja-ipafonts"
+export PERLDOC_PAGER="less -+C"
+export ACRO_DISABLE_FONT_CONFIG=1
+#export JAVA_HOME="/usr/lib/jvm/java-7-openjdk"
+export JAVA_HOME="/opt/java/jre"
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+#export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export GEM_HOME="/home/anthrax/.gem/ruby/2.0.0"
+export DEVKITPRO="/home/anthrax/Program/devkitPRO"
+export DEVKITPPC="/home/anthrax/Program/devkitPRO/devkitPPC"
+export AWT_TOOLKIT=MToolkit
+
+export LS_COLORS='rs=0:di=00;44:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:'
+
+### for open office font
+export SAL_EMBEDDED_BITMAP_PRIORITY=0
+
+#if [ ${+TERM} = 1 ] && [ $TERM = kterm -o $TERM = xterm ]; then
+#    eval `resize`
+#fi
+
+
+### alias
+alias l="ls -laF --color=auto"
+alias s="slogin"
+alias sr="slogin -l root"
+alias ssr="ssh-keygen -R"
+alias ak="env ACCEPT_KEYWORDS=~x86"
+alias kcd='eval "cd $(kdialog --getexistingdirectory ${HOME})"'
+alias gcd='eval "cd $(zenity --file-selection --directory)"'
+alias unzip2='unzip -O cp932'
+alias unrar2='unrar x -y -pdoujin-games88.net'
+alias x2goclient="unset SSH_ASKPASS; x2goclient"
+alias grpe="grep"
+alias cgrep='grep -v -e "^[ \t]*#" -e "^$"'
+alias urxvt="/home/anthrax/bin/urxvtc-start.sh"
+alias pp="setxkbmap -layout jp; xmodmap -e \"keycode 123 = backslash underscore\""
+alias epg='/srv/http/epgrec/shepherd.php'
+alias mosh="mosh --server=\"LANG=$LANG mosh-server\""
+alias smallx="xrandr -s 1680x1050"
+alias normalx="xrandr -s 1920x1200"
+alias vi="vim"
+alias curl="curl -s"
+alias json="python -mjson.tool"
+alias utf="printf \"\33]701;ja_JP.utf8\007\""
+alias euc="printf \"\33]701;ja_JP.EUC-JP\007\""
+alias jis="printf \"\33]701;ja_JP.ISO-2022-JP\007\""
+alias knife="~/knife-solo/bin/knife"
+alias bd='popd'
+alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
+
+#alias tome="tome -mgcu -- -b"
+#alias tome="tome -- -n3"
+
+if which pbcopy >/dev/null 2>&1 ; then
+    # Mac
+    alias -g C='pbcopy'
+elif which xsel >/dev/null 2>&1 ; then
+    # Linux
+    alias -g C='xsel --input --clipboard'
+    alias -g CC='xsel --input --primary'
+elif which putclip >/dev/null 2>&1 ; then
+    # Cygwin
+    alias -g C='putclip'
+fi
+
+function gettime(){
+  echo $1 | awk "{print strftime(\"%Y/%m/%d %H:%M:%S\", \$1)}"
+}
+
+
+mtitle () {echo -n "\033]61;$*\a"}
+title() {
+  print -nR $'\033k'$1$'\033'\\
+}
+title2() {
+  print -nR $'\033_'$2$'\033'\\
+}
+
+bindkey -e
+
+_cache_hosts=(`perl -ne  'if (/^([a-zA-Z0-9.-]+)/) { print "$1\n";}' ~/.ssh/known_hosts`)
+autoload -U compinit promptinit
+compinit
+promptinit
+
+### 補完 ###
+setopt auto_list			# 補完候補を一覧で表示(d)
+setopt auto_menu			# 補完キー連打で補完候補を順に表示(d)
+setopt list_packed			# 補完候補をできるだけ詰めて表示
+setopt list_types			# 補完候補にファイルの種類も表示
+setopt extended_glob
+unsetopt caseglob			# ファイルグロブで大文字小文字を区別しない
+zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+bindkey "^[[Z" reverse-menu-complete			# Shift-Tabで補完候補を逆順("\e[Z"でも動作する)
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'	# 補完時に大文字小文字を区別しない
+
+autoload -U colors; colors
+
+autoload -Uz vcs_info			# VCSの情報を取得するzshの便利関数 vcs_infoを使う
+
+# 表示フォーマットの指定
+# %b ブランチ情報
+# %a アクション名(mergeなど)
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+RPROMPT="%1(v|%F{green}%1v%f|)"
+
+
+#setopt auto_cd			# ディレクトリ名の入力のみで移動
+setopt auto_pushd		# cd時にディレクトリスタックにpushdする
+setopt pushd_ignore_dups	# 重複したdirectoryをpushdしない
+setopt correct			# コマンドのスペルを訂正する
+setopt magic_equal_subst	# =以降も補完する(--prefix=/usrなど)
+setopt prompt_subst		# プロンプト定義内で変数置換やコマンド置換を扱う
+setopt notify			# バックグラウンドジョブの状態変化を即時報告
+setopt equals			# =commandを`which command`と同じ処理
+
+
+#setopt PRINT_EXIT_VALUE
+PROMPT="%(?..[%F{red}exit=%?%f])[%B%F{white}%K{green}%n@%m:%y%k%f%b %d]%# "
+SPROMPT="%F{cyan}%{$suggest%} < もしかして %B%r%b %F{red}? [そう!(y), 違う!(n),a,e]:%f "
+
+HISTFILE=$HOME/.zsh-history		# 履歴をファイルに保存する
+HISTSIZE=100000				# メモリ内の履歴の数
+SAVEHIST=10000000			# 保存される履歴の数
+setopt extended_history			# 履歴ファイルに時刻を記録
+function history-all { history -E 1 }	# 全履歴の一覧を出力する
+#setopt share_history			# history の share
+
+setopt inc_append_history
+#setopt correct_all
+
+function ssh_screen(){
+  eval server=\${$#}
+  screen -t $server ssh "$@"
+}
+function ssh_root_screen(){
+  screen ssh -l root "$@"
+}
+if [ x$TERM = xscreen ]; then
+  alias ssh=ssh_screen
+  alias sr=ssh_root_screen
+fi
+
+if [ "$TERM" = "screen" ]; then
+title `hostname`
+fi
+
+#if [ ${+TERM} = 1 ] && [ $TERM = kterm -o $TERM = xterm ]; then
+#    eval `resize`
+#fi
+if [ $TERM = kterm ]; then
+    eval `resize`
+fi
+
+### perl
+export PERL_LOCAL_LIB_ROOT="/home/anthrax/perl5";
+export PERL_MB_OPT="--install_base /home/anthrax/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/anthrax/perl5";
+export PERL5LIB="/home/anthrax/perl5/lib/perl5/x86_64-linux-thread-multi:/home/anthrax/perl5/lib/perl5";
+export PATH="/home/anthrax/perl5/bin:$PATH";
+
+### Python virtualenv
+alias 2.7="source ~/virtualenv/python2.7/bin/activate"
+export WORKON_HOME=$HOME/virtualenv
+source `which virtualenvwrapper.sh`
+## sample:
+##     create:     mkvirtualenv -p /usr/bin/python2.7 my_env
+##     activate:   workon my_env
+##     deactivate: deactivate
+
+
+### dstat aliases
+alias dstat-full='dstat -tclmdrn'
+alias dstat-mem='dstat -tclm'
+alias dstat-cpu='dstat -tclr'
+alias dstat-net='dstat -tclnd'
+alias dstat-disk='dstat -tcldr'
+
+
+## rbenv
+eval "$(rbenv init -)"
+
+### ^ で cd ..(^ の入力はCtrl-V押してから)
+function cdup() {
+echo
+cd ..
+zle reset-prompt
+}
+zle -N cdup
+bindkey '\^' cdup
