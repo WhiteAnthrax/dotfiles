@@ -103,6 +103,7 @@ zstyle ':completion:*' menu select=1
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 bindkey "^[[Z" reverse-menu-complete			# Shift-Tabで補完候補を逆順("\e[Z"でも動作する)
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'	# 補完時に大文字小文字を区別しない
+#bindkey '^R' history-incremental-search-backward
 
 autoload -U colors; colors
 
@@ -111,8 +112,9 @@ autoload -Uz vcs_info			# VCSの情報を取得するzshの便利関数 vcs_info
 # 表示フォーマットの指定
 # %b ブランチ情報
 # %a アクション名(mergeなど)
-zstyle ':vcs_info:*' formats '[%b]'
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:*' formats '[%b] %c%u'
+zstyle ':vcs_info:*' actionformats '[%b|%a] %c%u'
 precmd () {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
@@ -120,7 +122,7 @@ precmd () {
 }
 
 # バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
-RPROMPT="%1(v|%F{green}%1v%f|)"
+RPROMPT="%1(v|%F{black}%K{green}%1v%k%f|)"
 
 
 #setopt auto_cd			# ディレクトリ名の入力のみで移動
