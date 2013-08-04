@@ -113,8 +113,8 @@ autoload -Uz vcs_info			# VCSの情報を取得するzshの便利関数 vcs_info
 # %b ブランチ情報
 # %a アクション名(mergeなど)
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:*' formats '[%b] %c%u'
-zstyle ':vcs_info:*' actionformats '[%b|%a] %c%u'
+zstyle ':vcs_info:*' formats '[%b]%c%u'
+zstyle ':vcs_info:*' actionformats '[%b|%a]%c%u'
 precmd () {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
