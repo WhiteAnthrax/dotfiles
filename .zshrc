@@ -124,7 +124,6 @@ precmd () {
 # バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
 RPROMPT="%1(v|%F{black}%K{green}%1v%k%f|)"
 
-
 #setopt auto_cd			# ディレクトリ名の入力のみで移動
 setopt auto_pushd		# cd時にディレクトリスタックにpushdする
 setopt pushd_ignore_dups	# 重複したdirectoryをpushdしない
@@ -134,9 +133,18 @@ setopt prompt_subst		# プロンプト定義内で変数置換やコマンド置
 setopt notify			# バックグラウンドジョブの状態変化を即時報告
 setopt equals			# =commandを`which command`と同じ処理
 
+### ホストごとに色を決める。未定義は赤くしとく
+typeset -A color_table
+color_table['joker']='%B%F{white}%K{green}%n@%m:%y%k%f%b'
+color_table['rise2']='%B%F{white}%K{yellow}%n@%m:%y%k%f%b'
+prompt_color=${color_table['$HOST']}
+if [[ ${prompt_color} = '' ]] ; then
+  prompt_color='%B%F{white}%K{red}%n@%m:%y%k%f%b'
+  echo "$HOST"
+fi
 
 #setopt PRINT_EXIT_VALUE
-PROMPT="%(?..[%F{red}exit=%?%f])[%B%F{white}%K{green}%n@%m:%y%k%f%b %d]%# "
+PROMPT="%(?..[%F{red}exit=%?%f])[${prompt_color} %d]%# "
 SPROMPT="%F{cyan}%{$suggest%} < もしかして %B%r%b %F{red}? [そう!(y), 違う!(n),a,e]:%f "
 
 HISTFILE=$HOME/.zsh-history		# 履歴をファイルに保存する
