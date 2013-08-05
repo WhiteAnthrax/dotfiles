@@ -1,5 +1,9 @@
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -f "/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" ]; then
+  source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+fi
+if [ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 export LANG="ja_JP.UTF-8"
 export TZ="JST-9"
@@ -140,7 +144,6 @@ color_table['rise2']='%B%F{white}%K{yellow}%n@%m:%y%k%f%b'
 prompt_color=${color_table['$HOST']}
 if [[ ${prompt_color} = '' ]] ; then
   prompt_color='%B%F{white}%K{red}%n@%m:%y%k%f%b'
-  echo "$HOST"
 fi
 
 #setopt PRINT_EXIT_VALUE
@@ -190,7 +193,9 @@ export PATH="/home/anthrax/perl5/bin:$PATH";
 ### Python virtualenv
 alias 2.7="source ~/virtualenv/python2.7/bin/activate"
 export WORKON_HOME=$HOME/virtualenv
-source `which virtualenvwrapper.sh`
+if [ -x 'virtualenvwrapper.sh' ]; then
+  source `which virtualenvwrapper.sh`
+fi
 ## sample:
 ##     create:     mkvirtualenv -p /usr/bin/python2.7 my_env
 ##     activate:   workon my_env
@@ -206,7 +211,9 @@ alias dstat-disk='dstat -tcldr'
 
 
 ## rbenv
-eval "$(rbenv init -)"
+if [ -x "/bin/rbenv" ]; then
+  eval "$(rbenv init -)"
+fi
 
 ### ^ で cd ..(^ の入力はCtrl-V押してから)
 function cdup() {
