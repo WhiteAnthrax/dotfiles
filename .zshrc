@@ -16,7 +16,6 @@ export ACRO_DISABLE_FONT_CONFIG=1
 export JAVA_HOME="/opt/java/jre"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 #export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-export GEM_HOME="~/.gem/ruby/2.0.0"
 export DEVKITPRO="~/Program/devkitPRO"
 export DEVKITPPC="~/Program/devkitPRO/devkitPPC"
 export AWT_TOOLKIT=MToolkit
@@ -137,17 +136,35 @@ setopt prompt_subst		# プロンプト定義内で変数置換やコマンド置
 setopt notify			# バックグラウンドジョブの状態変化を即時報告
 setopt equals			# =commandを`which command`と同じ処理
 
-### ホストごとに色を決める。未定義は赤くしとく
+### ユーザーごとに色を変える。
+typeset -A user_color_table
+user_color_table['root']='%F{red}'
+user_color_table['anthrax']='%B%F{white}'
+user_color_table['gitlab']='%B%F{magenta}'
+user_color=${user_color_table['$USER']}
+if [ ${user_color} = '' ]; then
+  user_color='%B%F{black}'
+fi
+
+### ホストごとに色を変える。未定義は赤くしとく
 typeset -A color_table
-color_table['joker']='%B%F{white}%K{green}%n@%m:%y%k%f%b'
-color_table['rise2']='%B%F{white}%K{yellow}%n@%m:%y%k%f%b'
+color_table['joker']='${user_color}%K{green}%n@%m:%y%k%f%b'
+color_table['rise2']='${user_color}%K{cyan}%n@%m:%y%k%f%b'
+color_table['sakura']='${user_color}%K{magenta}%n@%m:%y%k%f%b'
+color_table['docker1']='${user_color}%K{blue}%n@%m:%y%k%f%b'
 prompt_color=${color_table['$HOST']}
-if [[ ${prompt_color} = '' ]] ; then
-  prompt_color='%B%F{white}%K{red}%n@%m:%y%k%f%b'
+if [ ${prompt_color} = '' ]; then
+  prompt_color='%B${user_color}%K{red}%n@%m:%y%k%f%b'
+fi
+### rootのときはちょっと変えてみる
+if [ $UID -eq 0 ]; then
+  PROMPT="%U%(?..[%F{red}exit=%?%f])[${prompt_color} %d]%F{black}%K{red}%#%k%f%b%u "
+else
+  PROMPT="%(?..[%F{red}exit=%?%f])[${prompt_color} %d]%# "
 fi
 
 #setopt PRINT_EXIT_VALUE
-PROMPT="%(?..[%F{red}exit=%?%f])[${prompt_color} %d]%# "
+#PROMPT="%(?..[%F{red}exit=%?%f])[${prompt_color} %d]%# "
 SPROMPT="%F{cyan}%{$suggest%} < もしかして %B%r%b %F{red}? [そう!(y), 違う!(n),a,e]:%f "
 
 HISTFILE=$HOME/.zsh-history		# 履歴をファイルに保存する
