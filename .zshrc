@@ -153,7 +153,7 @@ color_table['rise2']='${user_color}%K{cyan}%n@%m:%y%k%f%b'
 color_table['sakura']='${user_color}%K{magenta}%n@%m:%y%k%f%b'
 color_table['docker1']='${user_color}%K{blue}%n@%m:%y%k%f%b'
 prompt_color=${color_table['$HOST']}
-if [ ${prompt_color} = '' ]; then
+if [[ ${prompt_color} = '' ]]; then
   prompt_color='%B${user_color}%K{red}%n@%m:%y%k%f%b'
 fi
 ### rootのときはちょっと変えてみる
