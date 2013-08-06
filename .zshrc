@@ -7,7 +7,7 @@ fi
 
 export LANG="ja_JP.UTF-8"
 export TZ="JST-9"
-export PATH="$HOME/bin:/usr/lib/ccache/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/java/jre/bin:${PATH}"
+export PATH="$HOME/bin:$HOME/.rbenv/bin:/usr/lib/ccache/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/java/jre/bin:${PATH}"
 export EDITOR="vim"
 export DOTFONTPATH="/usr/share/fonts/local:/usr/share/fonts/encodings:/usr/share/fonts/encodings/large:/usr/share/fonts/util:/usr/share/fonts/misc:/usr/share/fonts/75dpi:/usr/share/fonts/100dpi:/usr/share/fonts/cyrillic:/usr/share/fonts/Type1:/usr/share/fonts/CID:/usr/share/fonts/TTF:/usr/share/fonts/ukr:/usr/share/fonts/arphicfonts:/usr/share/fonts/baekmuk-fonts:/usr/share/fonts/default:/usr/share/fonts/default/ghostscript:/usr/share/fonts/kochi-substitute:/usr/share/fonts/aquafont:/usr/share/fonts/aquapfont:/usr/share/fonts/monafont:/usr/share/fonts/mikachan-font:/usr/share/fonts/sazanami:/usr/share/fonts/shinonome:/usr/share/fonts/ja-ipafonts"
 export PERLDOC_PAGER="less -+C"
@@ -228,7 +228,7 @@ alias dstat-disk='dstat -tcldr'
 
 
 ## rbenv
-if [ -x "rbenv" ]; then
+if [ -x "/bin/rbenv" -o "/usr/bin/rbenv" -o "$HOME/.rbenv/bin/rbenv" ]; then
   eval "$(rbenv init -)"
 fi
 
