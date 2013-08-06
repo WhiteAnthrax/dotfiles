@@ -232,7 +232,7 @@ alias dstat-disk='dstat -tcldr'
 #export PATH="$GEM_HOME/ruby/1.9.1/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 ## rbenv
-if [ -x "/bin/rbenv" -o "/usr/bin/rbenv" -o "$HOME/.rbenv/bin/rbenv" ]; then
+if [ -x "/bin/rbenv" -o -x "/usr/bin/rbenv" -o -x "$HOME/.rbenv/bin/rbenv" ]; then
   eval "$(rbenv init -)"
 fi
 
