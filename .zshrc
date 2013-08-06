@@ -228,7 +228,7 @@ alias dstat-disk='dstat -tcldr'
 
 
 ## rbenv
-if [ -x "/bin/rbenv" -o -x "/usr/bin/rbenv" ]; then
+if [ -x "rbenv" ]; then
   eval "$(rbenv init -)"
 fi
 
