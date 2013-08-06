@@ -228,8 +228,9 @@ alias dstat-disk='dstat -tcldr'
 
 
 ### ruby environment
-export GEM_HOME="$HOME/.gem"
-export PATH="$HOME/.rbenv/bin:$GEM_HOME/ruby/1.9.1/bin:$PATH"
+#export GEM_HOME="$HOME/.gem"
+#export PATH="$GEM_HOME/ruby/1.9.1/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 ## rbenv
 if [ -x "/bin/rbenv" -o "/usr/bin/rbenv" -o "$HOME/.rbenv/bin/rbenv" ]; then
   eval "$(rbenv init -)"
