@@ -51,3 +51,63 @@ set laststatus=2				" ステータスラインを2行に
 set statusline=%<%f\ #%n%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c%V%8P
 
 
+set nocompatible               " be iMproved
+filetype off
+
+"---------------------------------------
+" neobundle
+"---------------------------------------
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+" originalrepos on github
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/unite.vim'
+if has("lua")
+	NeoBundle 'Shougo/neocomplete'
+endif
+NeoBundle 'Shougo/neosnippet'
+"NeoBundle 'jpalardy/vim-slime'
+"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'alpaca-tc/vim-endwise.git', {
+	\ 'autoload' : {
+	\ 'insert' : 1, }}
+NeoBundle 'edsono/vim-matchit', { 'autoload' : {
+	\ 'filetypes' : 'ruby',
+	\ 'mappings' : ['nx', '%'] }}
+""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+
+filetype plugin indent on     " required!
+filetype indent on
+
+"------------------------------------
+" endwise.vim
+"------------------------------------
+let g:endwise_no_mappings=1
+
+"------------------------------------
+"" neosnippet
+"------------------------------------
+"" neosnippet "{{{
+ 
+" snippetを保存するディレクトリを設定してください
+" example
+let s:default_snippet = neobundle#get_neobundle_dir() .  '/neosnippet/autoload/neosnippet/snippets' " 本体に入っているsnippet
+let s:my_snippet = '~/snippet' " 自分のsnippet
+let g:neosnippet#snippets_directory = s:my_snippet
+let g:neosnippet#snippets_directory = s:default_snippet . ',' .  s:my_snippet
+imap <silent><C-F>                <Plug>(neosnippet_expand_or_jump)
+inoremap <silent><C-U>            <ESC>:<C-U>Unite snippet<CR>
+nnoremap <silent><Space>e         :<C-U>NeoSnippetEdit -split<CR>
+smap <silent><C-F>                <Plug>(neosnippet_expand_or_jump)
+"xmap <silent>o                    <Plug>(neosnippet_register_oneshot_snippet)
+" "}}}
+"
+
+set pastetoggle=<C-E>   " indent togglr
+set tabstop=4           " タブを表示するときの幅
+set shiftwidth=4        " タブを挿入するときの幅
+set noexpandtab         " タブをタブとして扱う(スペースに展開しない)
+set softtabstop=0

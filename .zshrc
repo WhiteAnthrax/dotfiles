@@ -141,6 +141,7 @@ typeset -A user_color_table
 user_color_table['root']='%F{red}'
 user_color_table['anthrax']='%B%F{white}'
 user_color_table['gitlab']='%B%F{magenta}'
+user_color_table['jenkins']='%B%F{blue}'
 user_color=${user_color_table['$USER']}
 if [ ${user_color} = '' ]; then
   user_color='%B%F{black}'
@@ -156,9 +157,14 @@ prompt_color=${color_table['$HOST']}
 if [[ ${prompt_color} = '' ]]; then
   prompt_color='%B${user_color}%K{red}%n@%m:%y%k%f%b'
 fi
+
 ### rootのときはちょっと変えてみる
 if [ $UID -eq 0 ]; then
-  PROMPT="%U%(?..[%F{red}exit=%?%f])[${prompt_color} %d]%F{black}%K{red}%#%k%f%b%u "
+  if [ "$HOST" = "sakura" ]; then
+    PROMPT="%U%(?..[%F{red}exit=%?%f])[%F{black}%K{magenta}%n@%m:%y%k%f %d]%F{black}%K{red}%#%k%f%b%u "
+  else
+    PROMPT="%U%(?..[%F{red}exit=%?%f])[${prompt_color} %d]%F{black}%K{red}%#%k%f%b%u "
+  fi
 else
   PROMPT="%(?..[%F{red}exit=%?%f])[${prompt_color} %d]%# "
 fi
