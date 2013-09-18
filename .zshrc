@@ -59,6 +59,13 @@ alias knife="$HOME/knife-solo/bin/knife"
 alias bd='popd'
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
 
+### dstat aliases
+alias dstat-full='dstat -tclmdrn'
+alias dstat-mem='dstat -tclm'
+alias dstat-cpu='dstat -tclr'
+alias dstat-net='dstat -tclnd'
+alias dstat-disk='dstat -tcldr'
+
 #alias tome="tome -mgcu -- -b"
 #alias tome="tome -- -n3"
 
@@ -207,39 +214,36 @@ if [ $TERM = kterm ]; then
 fi
 
 ### perl
-export PERL_LOCAL_LIB_ROOT="$HOME/perl5";
-export PERL_MB_OPT="--install_base $HOME/perl5";
-export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
-export PERL5LIB="$HOME/perl5/lib/perl5/x86_64-linux-thread-multi:$HOME/perl5/lib/perl5";
-export PATH="$HOME/perl5/bin:$PATH";
+if [ $UID -ne 0 ]; then
+	export PERL_LOCAL_LIB_ROOT="$HOME/perl5";
+	export PERL_MB_OPT="--install_base $HOME/perl5";
+	export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
+	export PERL5LIB="$HOME/perl5/lib/perl5/x86_64-linux-thread-multi:$HOME/perl5/lib/perl5";
+	export PATH="$HOME/perl5/bin:$PATH";
+fi
 
 ### Python virtualenv
-alias 2.7="source $HOME/virtualenv/python2.7/bin/activate"
-export WORKON_HOME=$HOME/virtualenv
-if [ -x 'virtualenvwrapper.sh' ]; then
-  source `which virtualenvwrapper.sh`
+if [ $UID -ne 0 ]; then
+	alias 2.7="source $HOME/virtualenv/python2.7/bin/activate"
+	if [ -x '/usr/bin/virtualenvwrapper.sh' ]; then
+		source `which virtualenvwrapper.sh`
+		export WORKON_HOME=$HOME/virtualenv
+	fi
 fi
 ## sample:
 ##     create:     mkvirtualenv -p /usr/bin/python2.7 my_env
 ##     activate:   workon my_env
 ##     deactivate: deactivate
 
-
-### dstat aliases
-alias dstat-full='dstat -tclmdrn'
-alias dstat-mem='dstat -tclm'
-alias dstat-cpu='dstat -tclr'
-alias dstat-net='dstat -tclnd'
-alias dstat-disk='dstat -tcldr'
-
-
 ### ruby environment
-#export GEM_HOME="$HOME/.gem"
-#export PATH="$GEM_HOME/ruby/1.9.1/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-## rbenv
-if [ -x "/bin/rbenv" -o -x "/usr/bin/rbenv" -o -x "$HOME/.rbenv/bin/rbenv" ]; then
-  eval "$(rbenv init -)"
+if [ $UID -ne 0 ]; then
+	#export GEM_HOME="$HOME/.gem"
+	#export PATH="$GEM_HOME/ruby/1.9.1/bin:$PATH"
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	## rbenv
+	if [ -x "/bin/rbenv" -o -x "/usr/bin/rbenv" -o -x "$HOME/.rbenv/bin/rbenv" ]; then
+	  eval "$(rbenv init -)"
+	fi
 fi
 
 ### ^ で cd ..(^ の入力はCtrl-V押してから)
