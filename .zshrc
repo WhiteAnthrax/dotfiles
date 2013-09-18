@@ -107,6 +107,7 @@ setopt auto_menu			# 補完キー連打で補完候補を順に表示(d)
 setopt list_packed			# 補完候補をできるだけ詰めて表示
 setopt list_types			# 補完候補にファイルの種類も表示
 setopt extended_glob
+setopt complete_aliases
 unsetopt caseglob			# ファイルグロブで大文字小文字を区別しない
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*' menu select=1
