@@ -248,10 +248,10 @@ if [ $UID -ne 0 ]; then
 fi
 
 ### ^ で cd ..(^ の入力はCtrl-V押してから)
-function cdup() {
-echo
-cd ..
-zle reset-prompt
-}
-zle -N cdup
-bindkey '\^' cdup
+#function cdup() {
+#echo
+#cd ..
+#zle reset-prompt
+#}
+#zle -N cdup
+#bindkey '\^' cdup
