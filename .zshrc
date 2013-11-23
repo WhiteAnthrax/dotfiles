@@ -31,6 +31,11 @@ export TZ="JST-9"
 
 
 ### alias
+if [ `uname` = "FreeBSD" ]; then
+  alias l="ls -laF"
+else
+  alias l="ls -laF --color=auto"
+fi
 alias l="ls -laF --color=auto"
 alias s="slogin"
 alias sr="slogin -l root"
