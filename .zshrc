@@ -44,7 +44,6 @@ alias ak="env ACCEPT_KEYWORDS=~x86"
 alias kcd='eval "cd $(kdialog --getexistingdirectory ${HOME})"'
 alias gcd='eval "cd $(zenity --file-selection --directory)"'
 alias unzip2='unzip -O cp932'
-alias unrar2='unrar x -y -pdoujin-games88.net'
 alias x2goclient="unset SSH_ASKPASS; x2goclient"
 alias grpe="grep"
 alias cgrep='grep -v -e "^[ \t]*#" -e "^$"'
