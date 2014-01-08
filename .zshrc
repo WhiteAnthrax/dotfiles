@@ -260,3 +260,7 @@ fi
 #}
 #zle -N cdup
 #bindkey '\^' cdup
+
+if [ -f "~/.zshrc_local" ]; then
+	. ~/.zshrc_local
+fi
