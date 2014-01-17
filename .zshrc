@@ -155,7 +155,7 @@ user_color_table['anthrax']='%B%F{white}'
 user_color_table['gitlab']='%B%F{magenta}'
 user_color_table['jenkins']='%B%F{blue}'
 user_color=${user_color_table['$USER']}
-if [ ${user_color} = '' ]; then
+if [ ${user_color:-default} = 'default' ]; then
   user_color='%B%F{black}'
 fi
 
