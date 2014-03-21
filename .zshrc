@@ -5,6 +5,8 @@ if [ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+autoload zargs
+
 export ACRO_DISABLE_FONT_CONFIG=1
 export AWT_TOOLKIT=MToolkit
 export DEVKITPRO="$HOME/Program/devkitPRO"
