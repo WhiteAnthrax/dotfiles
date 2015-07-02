@@ -22,7 +22,6 @@ export PATH="$HOME/bin:/usr/lib/ccache/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/lo
 export PERLDOC_PAGER="less -+C"
 export SAL_EMBEDDED_BITMAP_PRIORITY=0
 export TZ="JST-9"
-export yaourta="yaourt -Syyua --force --devel --noconfirm"
 #export JAVA_HOME="/usr/lib/jvm/java-7-openjdk"
 #export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
@@ -66,6 +65,7 @@ alias jis="printf \"\33]701;ja_JP.ISO-2022-JP\007\""
 alias knife="$HOME/knife-solo/bin/knife"
 alias bd='popd'
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
+alias yaourta="yaourt -Syyua --force --devel --noconfirm"
 
 ### dstat aliases
 alias dstat-full='dstat -tclmdrn'
