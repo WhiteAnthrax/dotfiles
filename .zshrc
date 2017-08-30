@@ -4,6 +4,7 @@ fi
 if [ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
 
 autoload zargs
 
